@@ -89,7 +89,6 @@ export default function DropZone() {
   const [files, setFiles] = useState<Array<any>>([]);
   const [actions, setActions] = useState<Array<Action>>([]);
   const [defaultValues, setDefaultValues] = useState<string>('video');
-  const [selected, setSelected] = useState<string>('...');
 
   const [isDone, setIsDone] = useState(false);
   const [isReady, setIsReady] = useState(false);
@@ -278,10 +277,9 @@ export default function DropZone() {
                       setDefaultValues('audio');
                     else if (EXTENSIONS.video.includes(value))
                       setDefaultValues('video');
-                    setSelected(value);
                     updateAction(action.fileName, value);
                   }}
-                  value={selected}
+                  value={action.to || '...'}
                 >
                   <SelectTrigger>
                     <SelectValue placeholder='...' />
